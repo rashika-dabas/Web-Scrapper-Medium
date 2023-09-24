@@ -7,7 +7,6 @@ import re
 from bs4 import BeautifulSoup
 import sys
 
-
 # function to get the html source text of the medium article
 def get_page():
 	global url
@@ -25,6 +24,7 @@ def get_page():
 	soup = BeautifulSoup(res.text, 'html.parser')
 	return soup
 
+
 # function to remove all the html tags and replace some with specific strings
 def clean(text):
     rep = {"<br>": "\n", "<br/>": "\n", "<li>":  "\n"}
@@ -34,6 +34,7 @@ def clean(text):
     text = re.sub('\<(.*?)\>', '', text)
     return text
 
+
 # function to extract text from the webpage
 def collect_text(soup):
 	text = f'url: {url}\n\n'
@@ -42,6 +43,7 @@ def collect_text(soup):
 	for para in para_text:
 		text += f"{para.text}\n\n"
 	return text
+
 
 # function to save file in the current directory
 def save_file(text):
